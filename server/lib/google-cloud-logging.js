@@ -16,7 +16,7 @@ function sendLogs(logs, callback) {
       method: 'POST',
       url: config.endpoint + config.key,
       headers: { 'Content-Type': 'application/json' },
-      body: logs.concat('\n')
+      body: JSON.stringify({ logName: "Auth0", entries: logs })
     }, (error, response) => {
       const isError = !!error || response.statusCode < 200 || response.statusCode >= 400;
 
@@ -60,10 +60,8 @@ GoogleCloudLogging.prototype.send = function(logs, callback) {
       timestamp: timestamp
     };
 
-    const json = JSON.stringify(_.extend(data, client, log));
-    console.log("Json: " + json);
-    message.push(json);
-    message.push('\n');
+    const d = _.extend(data, client, log);
+    message.push(d);
   });
 
   return sendLogs(message, callback);

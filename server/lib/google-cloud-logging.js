@@ -60,7 +60,9 @@ GoogleCloudLogging.prototype.send = function(logs, callback) {
       timestamp: timestamp
     };
 
-    message.push(JSON.stringify(_.extend(data, client, log)));
+    const json = JSON.stringify(_.extend(data, client, log));
+    console.log("Json: " + json);
+    message.push(json);
     message.push('\n');
   });
 

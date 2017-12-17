@@ -20,6 +20,7 @@
     "onUninstallPath": "/.extensions/on-uninstall",
     "scopes": "read:logs delete:clients"
   },
+  "codeUrl": "https://raw.githubusercontent.com/bline/auth0-logs-to-google-cloud/master/build/bundle.js",
   "secrets": {
     "GCLOUD_API_KEY": {
       "description": "Google Cloud Platform API key with permission to write:logs.",
